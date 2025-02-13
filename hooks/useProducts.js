@@ -5,7 +5,7 @@ import { setSearchQuery, setCategory } from '../store/slices/filtersSlice';
 export const useProducts = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => ({
-    products: state.products.items,
+    data: state.products.items,
     loading: state.products.status === 'loading',
     error: state.products.error,
     searchQuery: state.filters.searchQuery,

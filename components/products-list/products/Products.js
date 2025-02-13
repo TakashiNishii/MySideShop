@@ -1,30 +1,33 @@
 "use client"
 
-import { ProductCard, ProductsGrid } from "./products.styles"
+import { ProductsGrid } from "./products.styles"
 import { useProducts } from "@/hooks/useProducts";
 import { useEffect } from "react";
+import ProductCard from "./product-card/ProductCard";
 
 const Products = () => {
   const {
-    products,
+    data,
     loading,
     error,
     fetchProducts,
     searchQuery,
     selectedCategory
   } = useProducts();
-  console.log(products);
 
   useEffect(() => {
     fetchProducts();
   }, [searchQuery, selectedCategory]);
 
-
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
   return (
     <ProductsGrid>
-
+      {data.products && data.products.map((product) => {
+        return (
+          <ProductCard key={product.id} product={product} />
+        );
+      })}
     </ProductsGrid>
   )
 }
