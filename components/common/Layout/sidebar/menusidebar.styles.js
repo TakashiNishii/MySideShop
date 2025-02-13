@@ -50,6 +50,26 @@ export const SidebarContent = styled.div`
   box-shadow: ${({ theme }) => theme.shadows.hover};
   display: flex;
   flex-direction: column;
+
+  .link{
+    display: block;
+    padding: ${({ theme }) => theme.spacing.medium};
+    color: ${({ theme }) => theme.colors.text.primary};
+    text-decoration: none;
+    font-size: ${({ theme }) => theme.typography.sizes.body};
+    transition: background-color 0.2s;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.background.dark};
+    }
+
+    &.sign-up {
+      color: ${({ theme }) => theme.colors.primary};
+      font-weight: ${({ theme }) => theme.typography.weights.bold};
+      margin-top: ${({ theme }) => theme.spacing.large};
+    }
+  }
 `;
 
 export const SidebarHeader = styled.div`
@@ -65,25 +85,5 @@ export const SidebarHeader = styled.div`
     &:hover {
       transform: scale(1.1);
     }
-  }
-`;
-
-export const MobileLink = styled.a`
-  display: block;
-  padding: ${({ theme }) => theme.spacing.medium};
-  color: ${({ theme }) => theme.colors.text.primary};
-  text-decoration: none;
-  font-size: ${({ theme }) => theme.typography.sizes.body};
-  transition: background-color 0.2s;
-  border-radius: 4px;
-
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.background.dark};
-  }
-
-  &.sign-up {
-    color: ${({ theme }) => theme.colors.primary};
-    font-weight: ${({ theme }) => theme.typography.weights.bold};
-    margin-top: ${({ theme }) => theme.spacing.large};
   }
 `;

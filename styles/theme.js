@@ -40,7 +40,8 @@ export const theme = {
     medium: '16px',
     large: '24px',
     xlarge: '32px',
-    xxlarge: '48px'
+    xxlarge: '48px',
+    xxxlarge: '64px'
   },
   breakpoints: {
     mobile: '480px',

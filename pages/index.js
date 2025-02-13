@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { MainContainer } from "@/components/common/Layout/MainContainer";
 import Header from "@/components/common/Layout/Header";
+import ProductsList from "@/components/products-list/ProductsList";
 
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
       </Head>
       <Header />
       <MainContainer>
+        <ProductsList />
       </MainContainer>
     </>
   );

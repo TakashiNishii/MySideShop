@@ -5,7 +5,7 @@ export const HeaderStyled = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: ${({ theme }) => theme.spacing.small};
+  padding: ${({ theme }) => theme.spacing.small} 248px;
   background: ${({ theme }) => theme.colors.background.light};
   box-shadow: ${({ theme }) => theme.shadows.card};
   position: relative;
