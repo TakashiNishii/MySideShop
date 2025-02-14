@@ -11,6 +11,7 @@ export const CardContainer = styled.div`
   
   &:hover {
     transform: translateY(-5px);
+    border: 1px solid ${({ theme }) => theme.colors.primary};
   }
   .product-image{
     width: 100%;
