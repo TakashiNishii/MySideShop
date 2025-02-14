@@ -36,7 +36,7 @@ const ProductCard = (
           { }
         </ProductSubtitle>
         <CardFooter>
-          <Link href={`/products/${product.id}`} className='link' >
+          <Link href={`/productInfo?productId=${product.id}`} className='link' >
             View Details
           </Link>
           <AddToCartButton>

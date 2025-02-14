@@ -15,9 +15,6 @@ export async function getProducts(filters) {
   if (!response.ok) throw new Error('Failed to fetch products');
   if (searchQuery) {
     const data = await response.json();
-    console.log(data.products.filter((product) =>
-      product.title.toLowerCase().includes(searchQuery.toLowerCase())
-    ))
     return {
       ...response,
       products: data.products.filter((product) =>
@@ -25,6 +22,12 @@ export async function getProducts(filters) {
       )
     }
   }
+  return response.json();
+}
+
+export async function getProductById(id) {
+  const response = await fetch(`https://fakestoreapi.in/api/products/${id}`);
+  if (!response.ok) throw new Error('Failed to fetch product');
   return response.json();
 }
 

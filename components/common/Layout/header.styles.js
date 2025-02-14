@@ -5,7 +5,7 @@ export const HeaderStyled = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: ${({ theme }) => theme.spacing.small} 248px;
+  padding: ${({ theme }) => theme.spacing.small} ${({ theme }) => theme.spacing.xxxlarge};
   background: ${({ theme }) => theme.colors.background.light};
   box-shadow: ${({ theme }) => theme.shadows.card};
   position: relative;
@@ -17,7 +17,7 @@ export const HeaderStyled = styled.header`
     margin: 0;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
     padding: ${({ theme }) => theme.spacing.small};
   }
 `;
