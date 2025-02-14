@@ -25,6 +25,9 @@ export const SearchWithImageContainer = styled.div`
     cursor: pointer;
     margin-left: 8px;
   }
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const Input = styled.input`
@@ -36,7 +39,5 @@ export const Input = styled.input`
 
   @media (max-width: 768px) {
     width: 100%;
-    margin-right: 0;
-    margin-bottom: 16px;
   }
 `;

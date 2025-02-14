@@ -5,6 +5,11 @@ export const CategoryDropdownContainer = styled.div`
   flex-direction: row;
   align-items: center;
   gap: 4px;
+  @media (max-width: 768px) {
+    width: 100%;
+    margin: 8px 0 8px 0;
+    justify-content: center;
+  }
 `;
 
 export const CategoryDropdownTitle = styled.h3`

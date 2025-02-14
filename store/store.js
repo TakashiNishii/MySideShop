@@ -3,6 +3,7 @@ import { createWrapper } from 'next-redux-wrapper';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import rootReducer from './rootReducer';
+import filtersReducer from './slices/filtersSlice';
 
 const persistConfig = {
   key: 'root',
@@ -17,9 +18,7 @@ export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: ['persist/PERSIST']
-      }
+      serializableCheck: false
     })
 });
 

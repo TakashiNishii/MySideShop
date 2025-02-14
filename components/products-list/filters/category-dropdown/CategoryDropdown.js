@@ -1,21 +1,40 @@
-import React from 'react'
-import { CategoryDropdownContainer, CategoryDropdownOption, CategoryDropdownSelect, CategoryDropdownTitle } from './categorydropdown.styles'
+import React, { useEffect } from 'react';
+import { useCategories } from '@/hooks/useCategories';
+import { useProducts } from '@/hooks/useProducts';
+import {
+  CategoryDropdownContainer,
+  CategoryDropdownOption,
+  CategoryDropdownSelect,
+  CategoryDropdownTitle
+} from './categorydropdown.styles';
 
 const CategoryDropdown = () => {
+  const { categories, loading, error, fetchCategories } = useCategories();
+  const { selectedCategory, setCategory } = useProducts();
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
+  if (loading) return <div>Loading categories...</div>;
+  if (error) return <div>Error loading categories: {error}</div>;
+
   return (
     <CategoryDropdownContainer>
       <CategoryDropdownTitle>Category</CategoryDropdownTitle>
-      <CategoryDropdownSelect>
+      <CategoryDropdownSelect
+        value={selectedCategory}
+        onChange={(e) => setCategory(e.target.value)}
+      >
         <CategoryDropdownOption value="all">All</CategoryDropdownOption>
-        <CategoryDropdownOption value="tv">TV</CategoryDropdownOption>
-        <CategoryDropdownOption value="audio">Audio</CategoryDropdownOption>
-        <CategoryDropdownOption value="laptop">Laptop</CategoryDropdownOption>
-        <CategoryDropdownOption value="mobile">Mobile</CategoryDropdownOption>
-        <CategoryDropdownOption value="gaming">Gaming</CategoryDropdownOption>
-        <CategoryDropdownOption value="appliances">Appliances</CategoryDropdownOption>
+        {categories.categories.map((category) => (
+          <CategoryDropdownOption key={category} value={category}>
+            {category}
+          </CategoryDropdownOption>
+        ))}
       </CategoryDropdownSelect>
     </CategoryDropdownContainer>
-  )
-}
+  );
+};
 
-export default CategoryDropdown
+export default CategoryDropdown;
