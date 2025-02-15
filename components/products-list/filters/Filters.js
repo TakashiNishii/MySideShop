@@ -3,7 +3,8 @@ import { FiltersContainer, Input, SearchWithImageContainer } from './filters.sty
 import { Search } from 'lucide-react'
 import CategoryDropdown from './category-dropdown/CategoryDropdown'
 import { useProducts } from '@/hooks/useProducts'
-import { useState } from 'react'
+import { Suspense, useState } from 'react'
+import { ErrorBoundary } from '@/components/common/ErrorBoundary'
 
 const Filters = () => {
   const { searchQuery, setSearchQuery } = useProducts();
@@ -19,7 +20,11 @@ const Filters = () => {
         <Search size="24" className='icon-search' />
         <Input type="text" placeholder="Search..." defaultValue={searchQuery} onChange={(e) => handleSearch(e)} />
       </SearchWithImageContainer>
-      <CategoryDropdown />
+      <ErrorBoundary>
+        <Suspense fallback={<div>Loading categories...</div>}>
+          <CategoryDropdown />
+        </Suspense>
+      </ErrorBoundary>
     </FiltersContainer>
   )
 }

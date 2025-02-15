@@ -5,6 +5,7 @@ import {
 } from './header.styles';
 import MenuSidebar from './sidebar/MenuSidebar';
 import { Suspense } from 'react';
+import { ErrorBoundary } from '../ErrorBoundary';
 
 const Header = () => {
   return (
@@ -17,9 +18,11 @@ const Header = () => {
         <Link href="/about">About us</Link>
         <Link href="/signup" className="sign-up">Sign up</Link>
       </NavigationDiv>
-      <Suspense fallback={<></>}>
-        <MenuSidebar />
-      </Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={<></>}>
+          <MenuSidebar />
+        </Suspense>
+      </ErrorBoundary>
     </HeaderStyled>
   );
 };
