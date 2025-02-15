@@ -28,7 +28,7 @@ const CategoryDropdown = () => {
         onChange={(e) => setCategory(e.target.value)}
       >
         <CategoryDropdownOption value="all">All</CategoryDropdownOption>
-        {categories.categories.map((category) => (
+        {categories.categories && categories.categories.map((category) => (
           <CategoryDropdownOption key={category} value={category}>
             {category}
           </CategoryDropdownOption>
