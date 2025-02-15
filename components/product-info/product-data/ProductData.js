@@ -1,10 +1,11 @@
 "use client"
 import { useEffect } from 'react';
-import { ProductDetails, ProductImageContainer, ProductInfoSection } from './productdata.styles'
+import { ColorCircle, ColorDisplay, DescriptionSection, DiscountBadgeOutline, PriceWithDiscount, PriceWithoutDiscount, ProductDetails, ProductImageContainer, ProductInfoSection, ProductPrices } from './productdata.styles'
 import { useSearchParams } from 'next/navigation'
 import { useProductById } from '@/hooks/useProductById';
 import Image from 'next/image';
 import { ShoppingCart } from 'lucide-react';
+import { Icons } from '@/components/common/Icons/Icons';
 
 
 
@@ -22,6 +23,8 @@ const ProductData = () => {
   if (error) return <div>Error: {error}</div>;
   if (!data) return <div>Product not found</div>;
 
+  console.log(data.product)
+
   return (
     <ProductInfoSection>
       <ProductImageContainer>
@@ -29,7 +32,40 @@ const ProductData = () => {
       </ProductImageContainer>
       <ProductDetails>
         <h1>{data.product.title}</h1>
-        <h2>${data.product.price.toFixed(2)}</h2>
+        <ProductPrices>
+          <PriceWithDiscount>
+            ${data.product.price.toFixed(2)}
+          </PriceWithDiscount>
+          {data.product.discount && <PriceWithoutDiscount>${(data.product.price + data.product.discount).toFixed(2)}</PriceWithoutDiscount>}
+
+          {data.product.discount && <DiscountBadgeOutline>{data.product.discount}% off</DiscountBadgeOutline>}
+        </ProductPrices>
+
+        <h4>Product Description:</h4>
+
+        <DescriptionSection>
+          <h5>
+            Brand: {data.product.brand.charAt(0).toUpperCase() + data.product.brand.slice(1)}
+          </h5>
+
+          <h5>
+            Model: {data.product.model}
+          </h5>
+        </DescriptionSection>
+
+        <DescriptionSection>
+          <h5>
+            Category: {Icons[data.product.category]}
+            {data.product.category.charAt(0).toUpperCase() + data.product.category.slice(1)}
+          </h5>
+
+          <ColorDisplay>
+            <h5>Color: </h5>
+            <ColorCircle style={{ backgroundColor: data.product.color }} />
+          </ColorDisplay>
+        </DescriptionSection>
+
+
         <p>{data.product.description}</p>
         <button>
           <ShoppingCart size={24} />

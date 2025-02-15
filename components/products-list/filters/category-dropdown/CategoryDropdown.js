@@ -18,6 +18,7 @@ const CategoryDropdown = () => {
 
   if (loading) return <div>Loading categories...</div>;
   if (error) return <div>Error loading categories: {error}</div>;
+  if (!categories) return <div>No categories found</div>;
 
   return (
     <CategoryDropdownContainer>

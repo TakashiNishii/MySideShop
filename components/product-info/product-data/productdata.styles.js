@@ -41,11 +41,12 @@ export const ProductDetails = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0px;
-  h2{
-    color: #16A34A;
+
+
+  h4{
+    margin: 20px 0 10px 0;
   }
   p{
-    margin: 10px 0 10px 0;
     white-space: pre-wrap;
   }
   button{
@@ -64,4 +65,54 @@ export const ProductDetails = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
       width: 100%;
   }
+`
+
+export const ProductPrices = styled.div`
+  display: flex;
+  gap: 10px;
+  align-items: center;
+`
+
+export const PriceWithDiscount = styled.h3`
+  color: #16A34A;
+  font-size: 24px;
+  margin: 0px;
+`
+
+export const PriceWithoutDiscount = styled.span`
+  color: ${({ theme }) => theme.colors.primary};
+  text-decoration: line-through;
+  font-size: 18px;
+`
+
+export const DiscountBadgeOutline = styled.span`
+  border: 1px solid #16A34A;
+  color: #16A34A;
+  padding: 1px 5px;
+  border-radius: 100px;
+  font-size: 12px;
+`
+
+export const ColorDisplay = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  h5{
+    margin: 0px;
+  }
+`
+
+export const ColorCircle = styled.div`
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+`
+
+export const DescriptionSection = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
 `

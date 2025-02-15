@@ -1,17 +1,10 @@
 "use client"
-import { Gamepad, Headphones, HousePlug, Laptop, ShoppingCart, TabletSmartphone, Tv } from 'lucide-react';
+import { ShoppingCart } from 'lucide-react';
 import { AddToCartButton, CardContainer, CardFooter, DiscountBadge, Price, ProductContent, ProductSubtitle, ProductTitle } from './productcard.styles';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Icons } from '@/components/common/Icons/Icons';
 
-const Icons = {
-  'tv': <Tv size={20} />,
-  'audio': <Headphones size={20} />,
-  'laptop': <Laptop size={20} />,
-  'mobile': <TabletSmartphone size={20} />,
-  'gaming': <Gamepad size={20} />,
-  'appliances': <HousePlug size={20} />
-}
 
 const ProductCard = (
   { product }
