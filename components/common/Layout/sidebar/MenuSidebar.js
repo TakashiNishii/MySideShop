@@ -16,8 +16,8 @@ const MenuSidebar = () => {
         <Menu size={24} aria-label="menu" />
       </NavigationDivMobile>
 
-      <SidebarWrapper 
-        $isOpen={isSidebarOpen} 
+      <SidebarWrapper
+        $isOpen={isSidebarOpen}
         data-testid="sidebar"
         data-isopen={isSidebarOpen}
       >
@@ -29,8 +29,8 @@ const MenuSidebar = () => {
           </SidebarHeader>
 
           <nav>
-            <Link href="/" onClick={closeSidebar} className='link'>Catalogue</Link>
-            <Link href="/cart" onClick={closeSidebar} className='link'>Cart</Link>
+            <Link href="/" onClick={closeSidebar} className='link'>Home</Link>
+            <Link href="/checkout" onClick={closeSidebar} className='link'>Checkout</Link>
             <Link href="/about" onClick={closeSidebar} className='link'>About us</Link>
             <Link href="/signup" onClick={closeSidebar} className="sign-up link">Sign up</Link>
           </nav>

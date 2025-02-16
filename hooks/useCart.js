@@ -5,9 +5,9 @@ import { addItem, removeItem, clearCart } from '@/store/slices/cartSlice';
 const selectCartState = createSelector(
   (state) => state.cart,
   (cart) => ({
-    items: cart.items,
-    totalQuantity: cart.totalQuantity,
-    totalPrice: cart.totalPrice
+    items: cart?.items,
+    totalQuantity: cart?.totalQuantity,
+    totalPrice: cart?.totalPrice
   })
 );
 

@@ -3,6 +3,7 @@ import { useCart } from '@/hooks/useCart';
 import { CartSidebarContainer, CartSidebarContent, CartSidebarHeader, CartItem, CartItemInfo, CartTotal, EmptyCart, CartItemQuantity } from './cartsidebar.styles';
 import { X, Trash2, Plus, Minus } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const CartSidebar = (
   { onClose }
@@ -13,11 +14,11 @@ const CartSidebar = (
     return (
       <CartSidebarContainer>
         <CartSidebarHeader>
-          <h3>Carrinho</h3>
-          <X size={24} />
+          <h3>Cart</h3>
+          <X size={24} onClick={onClose} />
         </CartSidebarHeader>
         <EmptyCart>
-          <p>Seu carrinho está vazio</p>
+          <p>Your cart is empty</p>
         </EmptyCart>
       </CartSidebarContainer>
     );
@@ -26,7 +27,7 @@ const CartSidebar = (
   return (
     <CartSidebarContainer>
       <CartSidebarHeader>
-        <h3>Carrinho ({totalQuantity})</h3>
+        <h3>Cart ({totalQuantity})</h3>
         <div className="actions">
           <Trash2 size={20}
             onClick={() => {
@@ -72,7 +73,7 @@ const CartSidebar = (
           <span>Total:</span>
           <span>${totalPrice.toFixed(2)}</span>
         </div>
-        <button className="checkout">Finalizar Compra</button>
+        <Link href="/checkout" className='checkout'>Checkout</Link>
       </CartTotal>
     </CartSidebarContainer>
   );

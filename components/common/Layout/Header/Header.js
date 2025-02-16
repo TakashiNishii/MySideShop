@@ -12,8 +12,8 @@ const Header = () => {
       <h1>MySide Shop 🏬</h1>
 
       <NavigationDiv>
-        <Link href="/">Catalogue</Link>
-        <Link href="/cart">Cart</Link>
+        <Link href="/">Home</Link>
+        <Link href="/checkout">Checkout</Link>
         <Link href="/about">About us</Link>
         <Link href="/signup" className="sign-up">Sign up</Link>
       </NavigationDiv>

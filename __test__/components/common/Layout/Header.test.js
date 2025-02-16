@@ -1,43 +1,54 @@
 import { render, screen } from '@testing-library/react'
 import { ThemeProvider } from 'styled-components'
-import { theme } from '@/styles/theme'
-import { Suspense } from 'react'
+import { Provider } from 'react-redux'
+import { configureStore } from '@reduxjs/toolkit'
 import Header from '@/components/common/Layout/Header'
+import { theme } from '@/styles/theme'
+import cartReducer from '@/store/slices/cartSlice'
 
-const renderWithTheme = (component) => {
+const createMockStore = (initialState = {}) => {
+  return configureStore({
+    reducer: {
+      cart: cartReducer
+    },
+    preloadedState: {
+      cart: {
+        items: [],
+        totalQuantity: 0,
+        totalPrice: 0,
+        ...initialState
+      }
+    }
+  })
+}
+
+const renderWithTheme = (component, initialState = {}) => {
+  const store = createMockStore(initialState)
   return render(
-    <ThemeProvider theme={theme}>
-      <Suspense fallback={<div>Loading...</div>}>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
         {component}
-      </Suspense>
-    </ThemeProvider>
+      </ThemeProvider>
+    </Provider>
   )
 }
 
 describe('Header', () => {
   it('Should render the title', () => {
     renderWithTheme(<Header />)
-    const title = screen.getByText(/MySide Shop/i)
-    expect(title).toBeInTheDocument()
+    expect(screen.getByText('MySide Shop 🏬')).toBeInTheDocument()
   })
 
   it('Should render the links', () => {
     renderWithTheme(<Header />)
-
-    const catalogueLink = screen.getByRole('link', { name: /catalogue/i })
-    const cartLink = screen.getByRole('link', { name: /cart/i })
-    const aboutLink = screen.getByRole('link', { name: /about us/i })
-    const signUpLink = screen.getByRole('link', { name: /sign up/i })
-
-    expect(catalogueLink).toBeInTheDocument()
-    expect(cartLink).toBeInTheDocument()
-    expect(aboutLink).toBeInTheDocument()
-    expect(signUpLink).toBeInTheDocument()
+    expect(screen.getByText('Home')).toBeInTheDocument()
+    expect(screen.getByText('Checkout')).toBeInTheDocument()
+    expect(screen.getByText('About us')).toBeInTheDocument()
   })
 
   it('Should have the sign-up link with the class sign-up', () => {
     renderWithTheme(<Header />)
-    const signUpLink = screen.getByRole('link', { name: /sign up/i })
+    const signUpLink = screen.getByText('Sign up')
     expect(signUpLink).toHaveClass('sign-up')
   })
 }) 

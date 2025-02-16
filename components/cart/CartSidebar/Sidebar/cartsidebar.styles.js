@@ -130,6 +130,8 @@ export const CartTotal = styled.div`
   }
 
   .checkout {
+    display: flex;
+    justify-content: center;
     width: 100%;
     padding: 12px;
     background: ${({ theme }) => theme.colors.primary};
