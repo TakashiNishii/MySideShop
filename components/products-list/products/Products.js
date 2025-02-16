@@ -30,9 +30,11 @@ const Products = () => {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
+  const shouldShowPagination = !searchQuery && selectedCategory === 'all';
+
   return (
     <>
-      {!searchQuery && (
+      {shouldShowPagination && (
         <Pagination
           currentPage={page}
           totalPages={totalPages}
@@ -46,7 +48,7 @@ const Products = () => {
         ))}
       </ProductsGrid>
 
-      {!searchQuery && (
+      {shouldShowPagination && (
         <Pagination
           currentPage={page}
           totalPages={totalPages}

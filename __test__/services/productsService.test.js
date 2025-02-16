@@ -50,7 +50,7 @@ describe('Products Service', () => {
     expect(result.products[0].title).toContain('iPhone');
   });
 
-  it('Should fetch products by category', async () => {
+  it('Should fetch products by category without pagination', async () => {
     const mockProducts = {
       products: [
         { id: 1, title: 'Product 1', category: 'mobile' }
@@ -64,7 +64,7 @@ describe('Products Service', () => {
 
     await getProducts({ category: 'mobile' });
 
-    expect(fetch).toHaveBeenCalledWith('https://fakestoreapi.in/api/products/category?type=mobile&limit=10&page=1');
+    expect(fetch).toHaveBeenCalledWith('https://fakestoreapi.in/api/products/category?limit=150&type=mobile');
   });
 
   it('Should fetch product by ID', async () => {

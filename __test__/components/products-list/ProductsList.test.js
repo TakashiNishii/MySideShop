@@ -1,42 +1,37 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import { Provider } from 'react-redux'
 import { configureStore } from '@reduxjs/toolkit'
 import { ThemeProvider } from 'styled-components'
 import ProductsList from '@/components/products-list/ProductsList'
 import { themeMock } from '../../mocks/themeMock'
-import productsReducer from '@/store/slices/productsSlice'
-import filtersReducer from '@/store/slices/filtersSlice'
+import * as productsService from '@/services/productsService'
 
-jest.mock('@/services/productsService', () => ({
-  getProducts: jest.fn(),
-  searchProducts: jest.fn()
-}))
+jest.mock('@/services/productsService')
 
-const createMockStore = (initialState = {}) => {
-  return configureStore({
-    reducer: {
-      products: productsReducer,
-      filters: filtersReducer
+const mockProducts = {
+  products: [
+    {
+      id: 1,
+      title: 'Produto 1',
+      price: 99.99,
+      image: 'https://via.placeholder.com/150',
     },
-    preloadedState: {
-      products: {
-        items: [],
-        status: 'idle',
-        error: null,
-        ...initialState.products
-      },
-      filters: {
-        searchQuery: '',
-        category: 'all',
-        page: 1,
-        ...initialState.filters
-      }
-    }
-  })
+    {
+      id: 2,
+      title: 'Produto 2',
+      price: 199.99,
+      image: 'https://via.placeholder.com/150',
+    },
+  ],
 }
 
 const renderWithProviders = (ui, { initialState = {} } = {}) => {
-  const store = createMockStore(initialState)
+  const store = configureStore({
+    reducer: {
+      products: (state = { items: mockProducts, loading: false, error: null }) => state,
+      filters: (state = { searchQuery: '', selectedCategory: null }) => state,
+    },
+  })
   return render(
     <Provider store={store}>
       <ThemeProvider theme={themeMock}>
@@ -47,10 +42,15 @@ const renderWithProviders = (ui, { initialState = {} } = {}) => {
 }
 
 describe('ProductsList', () => {
-  it('should render loading state', () => {
-    renderWithProviders(<ProductsList />, {
-      products: { status: 'loading' }
+  beforeEach(() => {
+    productsService.getProducts.mockResolvedValue(mockProducts)
+  })
+
+  it('should fetch and display products', async () => {
+    renderWithProviders(<ProductsList />)
+
+    await waitFor(() => {
+      expect(screen.getByTestId('products-section')).toBeInTheDocument()
     })
-    expect(screen.getByText('Loading...')).toBeInTheDocument()
   })
 }) 
