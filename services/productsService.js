@@ -5,11 +5,16 @@ export async function getProducts(filters) {
 
   if (category && category !== 'all') {
     url += `/category?type=${category}`;
+    if (searchQuery) {
+      url += `&limit=${maxLimit}`;
+    }
+  } else {
+    if (searchQuery) {
+      url += `?limit=${maxLimit}`;
+    }
   }
 
-  if (searchQuery) {
-    url += `?limit=${maxLimit}`;
-  }
+
 
   const response = await fetch(url);
   if (!response.ok) throw new Error('Failed to fetch products');

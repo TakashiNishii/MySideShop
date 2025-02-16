@@ -13,15 +13,19 @@ const MenuSidebar = () => {
   return (
     <Fragment>
       <NavigationDivMobile onClick={toggleSidebar}>
-        <Menu size={24} />
+        <Menu size={24} aria-label="menu" />
       </NavigationDivMobile>
 
-      <SidebarWrapper $isOpen={isSidebarOpen}>
+      <SidebarWrapper 
+        $isOpen={isSidebarOpen} 
+        data-testid="sidebar"
+        data-isopen={isSidebarOpen}
+      >
         <SidebarBackdrop onClick={closeSidebar} />
 
         <SidebarContent $isOpen={isSidebarOpen}>
           <SidebarHeader>
-            <X size={24} onClick={closeSidebar} />
+            <X size={24} onClick={closeSidebar} aria-label="close" />
           </SidebarHeader>
 
           <nav>
