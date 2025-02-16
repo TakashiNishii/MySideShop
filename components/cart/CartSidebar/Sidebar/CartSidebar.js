@@ -47,7 +47,7 @@ const CartSidebar = (
               <p>${item.price}</p>
               <CartItemQuantity>
                 <button onClick={() => {
-                  if (item.quantity === 1) {
+                  if (totalQuantity === 1) {
                     clearCart()
                     onClose()
                   } else {
@@ -61,6 +61,7 @@ const CartSidebar = (
                   <Plus size={16} />
                 </button>
               </CartItemQuantity>
+              <span>Subtotal: ${item.price * item.quantity}</span>
             </CartItemInfo>
           </CartItem>
         ))}
