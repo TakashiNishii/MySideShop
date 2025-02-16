@@ -25,14 +25,14 @@ export default function Checkout() {
     }, 500);
   };
 
-  if (items.length === 0) {
+  if (!items?.length) {
     return (
       <>
         <BaseLayout />
         <MainContainer>
           <CheckoutContainer>
             <h1>Checkout</h1>
-            <p>Seu carrinho está vazio</p>
+            <p>Your cart is empty</p>
           </CheckoutContainer>
         </MainContainer>
       </>

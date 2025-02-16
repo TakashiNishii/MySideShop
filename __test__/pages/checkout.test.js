@@ -20,17 +20,12 @@ const createMockStore = (initialState = {}) => {
       cart: cartReducer
     },
     preloadedState: {
-      cart: {
-        items: [],
-        totalQuantity: 0,
-        totalPrice: 0,
-        ...initialState
-      }
+      cart: initialState
     }
   });
 };
 
-const renderWithProviders = (ui, { initialState } = {}) => {
+const renderWithProviders = (ui, { initialState = {} } = {}) => {
   const store = createMockStore(initialState);
   return render(
     <Provider store={store}>
@@ -92,7 +87,8 @@ describe('Checkout Page', () => {
       }
     });
 
-    fireEvent.click(screen.getByText('Checkout'));
+    const checkoutButton = screen.getByRole('button', { name: /checkout/i });
+    fireEvent.click(checkoutButton);
 
     expect(screen.getByText('Purchase successful! 🎉')).toBeInTheDocument();
 

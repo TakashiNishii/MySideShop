@@ -12,12 +12,7 @@ const createMockStore = (initialState = {}) => {
       cart: cartReducer
     },
     preloadedState: {
-      cart: {
-        items: [],
-        totalQuantity: 0,
-        totalPrice: 0,
-        ...initialState
-      }
+      cart: initialState
     }
   })
 }
@@ -41,14 +36,18 @@ describe('Header', () => {
 
   it('Should render the links', () => {
     renderWithTheme(<Header />)
-    expect(screen.getByText('Home')).toBeInTheDocument()
-    expect(screen.getByText('Checkout')).toBeInTheDocument()
-    expect(screen.getByText('About us')).toBeInTheDocument()
+    const homeLink = screen.getByRole('link', { name: 'Home', exact: true })
+    const checkoutLink = screen.getByRole('link', { name: 'Checkout', exact: true })
+    const aboutLink = screen.getByRole('link', { name: 'About us', exact: true })
+
+    expect(homeLink).toBeInTheDocument()
+    expect(checkoutLink).toBeInTheDocument()
+    expect(aboutLink).toBeInTheDocument()
   })
 
   it('Should have the sign-up link with the class sign-up', () => {
     renderWithTheme(<Header />)
-    const signUpLink = screen.getByText('Sign up')
+    const signUpLink = screen.getByRole('link', { name: 'Sign up', exact: true })
     expect(signUpLink).toHaveClass('sign-up')
   })
 }) 
