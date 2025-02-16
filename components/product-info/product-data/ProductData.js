@@ -6,6 +6,7 @@ import { useProductById } from '@/hooks/useProductById';
 import Image from 'next/image';
 import { ShoppingCart } from 'lucide-react';
 import { Icons } from '@/components/common/Icons/Icons';
+import { AddCartButton } from '@/components/cart/AddCartButton';
 
 
 
@@ -65,10 +66,7 @@ const ProductData = () => {
 
 
         <p>{data.product?.description}</p>
-        <button>
-          <ShoppingCart size={24} />
-          Add to cart
-        </button>
+        <AddCartButton product={data.product} expanded={true} />
       </ProductDetails>
     </ProductInfoSection>
   )

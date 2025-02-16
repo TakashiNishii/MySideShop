@@ -3,12 +3,11 @@ import { createWrapper } from 'next-redux-wrapper';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import rootReducer from './rootReducer';
-import filtersReducer from './slices/filtersSlice';
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['filters'],
+  whitelist: ['filters', 'cart'],
   blacklist: ['products']
 };
 

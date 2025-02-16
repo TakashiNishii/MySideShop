@@ -5,6 +5,7 @@ import {
 } from './header.styles';
 import MenuSidebar from './sidebar/MenuSidebar';
 import { Suspense } from 'react';
+import { CartIndicator } from '@/components/cart/CartSidebar/CartIndicator';
 
 const Header = () => {
   return (
@@ -17,6 +18,8 @@ const Header = () => {
         <Link href="/about">About us</Link>
         <Link href="/signup" className="sign-up">Sign up</Link>
       </NavigationDiv>
+
+      <CartIndicator />
       <Suspense fallback={<></>}>
         <MenuSidebar />
       </Suspense>

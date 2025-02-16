@@ -1,9 +1,9 @@
 "use client"
-import { ShoppingCart } from 'lucide-react';
-import { AddToCartButton, CardContainer, CardFooter, DiscountBadge, Price, ProductContent, ProductSubtitle, ProductTitle } from './productcard.styles';
+import { CardContainer, CardFooter, DiscountBadge, Price, ProductContent, ProductSubtitle, ProductTitle } from './productcard.styles';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Icons } from '@/components/common/Icons/Icons';
+import { AddCartButton } from '@/components/cart/AddCartButton';
 
 
 const ProductCard = (
@@ -32,14 +32,7 @@ const ProductCard = (
           <Link href={`/productInfo?productId=${product.id}`} className='link' >
             View Details
           </Link>
-          <AddToCartButton>
-            <ShoppingCart size={20} style={
-              {
-                marginLeft: '-8px',
-                marginTop: '-6px'
-              }
-            } />
-          </AddToCartButton>
+          <AddCartButton product={product} expanded={false} />
         </CardFooter>
 
       </ProductContent>

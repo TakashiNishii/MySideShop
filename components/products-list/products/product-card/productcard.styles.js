@@ -92,24 +92,6 @@ export const Price = styled.div`
   }
 `;
 
-export const AddToCartButton = styled.button`
-  width: 30px;
-  height: 30px;
-  padding: 12px;
-  background: #16A34A;
-  color: white;
-  border: none;
-  border-radius: 100%;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  text-align: center;
-
-  &:hover {
-    opacity: 0.8;
-  }
-`;
-
 export const CardFooter = styled.div`
   display: flex;
   padding-top: 4px;
