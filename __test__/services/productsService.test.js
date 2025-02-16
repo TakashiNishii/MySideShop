@@ -13,7 +13,10 @@ describe('Products Service', () => {
       products: [
         { id: 1, title: 'Product 1' },
         { id: 2, title: 'Product 2' }
-      ]
+      ],
+      total: 150,
+      totalPages: 15,
+      currentPage: 1
     };
 
     fetch.mockResolvedValueOnce({
@@ -23,7 +26,7 @@ describe('Products Service', () => {
 
     const result = await getProducts({ searchQuery: '', category: 'all' });
 
-    expect(fetch).toHaveBeenCalledWith('https://fakestoreapi.in/api/products');
+    expect(fetch).toHaveBeenCalledWith("https://fakestoreapi.in/api/products?limit=10&page=1");
     expect(result).toEqual(mockProducts);
   });
 
@@ -61,7 +64,7 @@ describe('Products Service', () => {
 
     await getProducts({ category: 'mobile' });
 
-    expect(fetch).toHaveBeenCalledWith('https://fakestoreapi.in/api/products/category?type=mobile');
+    expect(fetch).toHaveBeenCalledWith('https://fakestoreapi.in/api/products/category?type=mobile&limit=10&page=1');
   });
 
   it('Should fetch product by ID', async () => {

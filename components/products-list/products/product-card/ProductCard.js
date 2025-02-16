@@ -25,8 +25,11 @@ const ProductCard = (
           {Icons[product.category]} Model: {product.model?.length > 20 ? product.model.slice(0, 20) + '...' : product.model}
         </ProductSubtitle>
         <ProductSubtitle>
-          {product.description.length > 125 ? product.description.slice(0, 125) + '...' : product.description}
-          { }
+          {product.description ? 
+            (product.description.length > 125 ? 
+              product.description.slice(0, 125) + '...' : 
+              product.description
+            ) : ''}
         </ProductSubtitle>
         <CardFooter>
           <Link href={`/productInfo?productId=${product.id}`} className='link' >

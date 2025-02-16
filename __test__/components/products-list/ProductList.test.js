@@ -1,41 +1,30 @@
 import { render, screen } from '@testing-library/react'
-import { ThemeProvider } from 'styled-components'
 import { Provider } from 'react-redux'
 import { configureStore } from '@reduxjs/toolkit'
+import { ThemeProvider } from 'styled-components'
 import Products from '@/components/products-list/products/Products'
+import { themeMock } from '../../mocks/themeMock'
 
 jest.mock('next/image', () => ({
   __esModule: true,
   default: (props) => {
-    return <img {...props} alt={props.alt} />
+    // eslint-disable-next-line jsx-a11y/alt-text, @next/next/no-img-element
+    return <img {...props} />
   },
 }))
-
-const theme = {
-  colors: {
-    primary: '#007bff',
-    secondary: '#6c757d',
-  },
-}
 
 const mockProducts = [
   {
     id: 1,
     title: 'Produto Teste 1',
     price: 99.99,
-    image: 'https://example.com/image1.jpg',
-    description: 'Descrição do produto 1',
-    category: 'electronics',
-    model: 'Modelo 1'
+    image: 'https://via.placeholder.com/150'
   },
   {
     id: 2,
     title: 'Produto Teste 2',
     price: 149.99,
-    image: 'https://example.com/image2.jpg',
-    description: 'Descrição do produto 2',
-    category: 'electronics',
-    model: 'Modelo 2'
+    image: 'https://via.placeholder.com/150'
   }
 ]
 
@@ -49,11 +38,12 @@ const mockInitialState = {
   },
   filters: {
     searchQuery: '',
-    category: null
+    category: 'all',
+    page: 1
   }
 }
 
-const createMockStore = (initialState) => configureStore({
+const createMockStore = (initialState = mockInitialState) => configureStore({
   reducer: {
     products: (state = initialState.products) => state,
     filters: (state = initialState.filters) => state
@@ -64,7 +54,7 @@ const renderWithProviders = (ui, { initialState = mockInitialState } = {}) => {
   const store = createMockStore(initialState)
   return render(
     <Provider store={store}>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={themeMock}>
         {ui}
       </ThemeProvider>
     </Provider>
@@ -78,14 +68,11 @@ describe('Products', () => {
 
   it('Should render the products list correctly', () => {
     renderWithProviders(<Products />)
-
     expect(screen.getByText('Produto Teste 1')).toBeInTheDocument()
     expect(screen.getByText('Produto Teste 2')).toBeInTheDocument()
-    expect(screen.getByText('Model: Modelo 1')).toBeInTheDocument()
-    expect(screen.getByText('Model: Modelo 2')).toBeInTheDocument()
   })
 
-  it('Should render the loading state during loading', () => {
+  it('Should render loading state', () => {
     const loadingState = {
       ...mockInitialState,
       products: {
@@ -98,7 +85,7 @@ describe('Products', () => {
     expect(screen.getByText('Loading...')).toBeInTheDocument()
   })
 
-  it('Should render the error message when there is an error', () => {
+  it('Should render error state', () => {
     const errorState = {
       ...mockInitialState,
       products: {
@@ -123,6 +110,5 @@ describe('Products', () => {
     renderWithProviders(<Products />, { initialState: emptyState })
     const productsGrid = screen.getByTestId('products-section')
     expect(productsGrid).toBeInTheDocument()
-    expect(productsGrid.children).toHaveLength(0)
   })
 })

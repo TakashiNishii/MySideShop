@@ -15,15 +15,23 @@ const filtersSlice = createSlice({
     categories: [],
     searchQuery: '',
     category: 'all',
-    status: 'idle',
-    error: null
+    page: 1,
+    totalPages: 1 // Será atualizado com o valor real retornado pela API
   },
   reducers: {
     setSearchQuery: (state, action) => {
       state.searchQuery = action.payload;
+      state.page = 1; // Reset página ao buscar
     },
     setCategory: (state, action) => {
       state.category = action.payload;
+      state.page = 1; // Reset página ao mudar categoria
+    },
+    setPage: (state, action) => {
+      state.page = action.payload;
+    },
+    setTotalPages: (state, action) => {
+      state.totalPages = action.payload;
     }
   },
   extraReducers: (builder) => {
@@ -42,5 +50,5 @@ const filtersSlice = createSlice({
   }
 });
 
-export const { setSearchQuery, setCategory } = filtersSlice.actions;
+export const { setSearchQuery, setCategory, setPage, setTotalPages } = filtersSlice.actions;
 export default filtersSlice.reducer;

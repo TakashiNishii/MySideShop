@@ -20,7 +20,7 @@ export default function About() {
               <h1>About MySide Shop</h1>
               <p>
                 Welcome to MySide Shop, your premier destination for unique and stylish products.
-                Founded in 2024, we've made it our mission to bring you carefully curated items
+                Founded in 2024, we&apos;ve made it our mission to bring you carefully curated items
                 that combine quality, style, and affordability.
               </p>
             </AboutSection>
@@ -67,7 +67,7 @@ export default function About() {
             <AboutSection>
               <h2>Contact Us</h2>
               <p>
-                Have questions? We'd love to hear from you! Reach out to us at:
+                Have questions? We&apos;d love to hear from you! Reach out to us at:
                 <br />
                 Email: ygortn14@gmail.com
                 <br />
