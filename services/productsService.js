@@ -1,4 +1,6 @@
 const BASE_URL = 'https://fakestoreapi.in/api';
+const ITEMS_PER_PAGE = 10;
+const TOTAL_ITEMS = 150;
 
 export const getProducts = async ({ searchQuery = '', category = 'all', page = 1 }) => {
   try {
@@ -34,15 +36,30 @@ export const getProducts = async ({ searchQuery = '', category = 'all', page = 1
       );
 
       return {
-        ...data,
         products: filteredProducts,
+        total: filteredProducts.length,
         currentPage: 1,
         totalPages: 1 // Não há paginação na busca
       };
     }
 
-    // Se não houver busca, retorna os dados normalmente
-    return data;
+    // Se for listagem normal (sem filtros), calcula a paginação
+    if (category === 'all' && !searchQuery) {
+      return {
+        products: data.products,
+        total: TOTAL_ITEMS,
+        currentPage: page,
+        totalPages: Math.ceil(TOTAL_ITEMS / ITEMS_PER_PAGE)
+      };
+    }
+
+    // Se for filtro por categoria, retorna sem paginação
+    return {
+      products: data.products,
+      total: data.products.length,
+      currentPage: 1,
+      totalPages: 1
+    };
   } catch (error) {
     throw new Error('Failed to fetch products');
   }
