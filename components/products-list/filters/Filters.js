@@ -14,7 +14,7 @@ const Filters = () => {
     setTimeoutId(setTimeout(() => setSearchQuery(value), 500));
   };
   return (
-    <FiltersContainer>
+    <FiltersContainer id='filters-section'>
       <SearchWithImageContainer>
         <Search size="24" className='icon-search' />
         <Input type="text" placeholder="Search..." defaultValue={searchQuery} onChange={(e) => handleSearch(e)} />

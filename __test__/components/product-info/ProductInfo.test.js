@@ -53,7 +53,7 @@ const renderWithTheme = (component) => {
 }
 
 describe('ProductInfo', () => {
-  it('Deve renderizar as informações do produto corretamente', () => {
+  it('Should render the product info correctly', () => {
     renderWithTheme(<ProductInfo />)
 
     expect(screen.getByText('Produto Teste')).toBeInTheDocument()
@@ -66,7 +66,7 @@ describe('ProductInfo', () => {
     expect(image).toHaveAttribute('alt', 'Produto Teste')
   })
 
-  it('Deve exibir mensagem quando os dados do produto não estiverem disponíveis', () => {
+  it('Should render the product not found message when the product is not available', () => {
     const emptyStore = configureStore({
       reducer: {
         products: (state = {

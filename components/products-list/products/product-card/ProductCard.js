@@ -17,12 +17,12 @@ const ProductCard = (
       <ProductContent>
         <ProductTitle
           title={product.title}
-        >{product.title.length > maxTitleLength ? product.title.slice(0, maxTitleLength) + '...' : product.title}</ProductTitle>
+        >{product.title?.length > maxTitleLength ? product.title.slice(0, maxTitleLength) + '...' : product.title}</ProductTitle>
         <Price>${product.price}
-          <span className='category'>{product.category.charAt(0).toUpperCase() + product.category.slice(1)}</span>
+          <span className='category'>{product.category?.charAt(0).toUpperCase() + product.category?.slice(1)}</span>
         </Price>
         <ProductSubtitle title={product.model}>
-          {Icons[product.category]} Model: {product.model.length > 20 ? product.model.slice(0, 20) + '...' : product.model}
+          {Icons[product.category]} Model: {product.model?.length > 20 ? product.model.slice(0, 20) + '...' : product.model}
         </ProductSubtitle>
         <ProductSubtitle>
           {product.description.length > 125 ? product.description.slice(0, 125) + '...' : product.description}

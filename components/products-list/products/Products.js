@@ -22,7 +22,7 @@ const Products = () => {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
   return (
-    <ProductsGrid>
+    <ProductsGrid id='products-section' data-testid='products-section'>
       {data.products && data.products.map((product) => {
         return (
           <ProductCard key={product.id} product={product} />
