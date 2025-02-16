@@ -8,6 +8,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'storage.googleapis.***'
+      },
+      {
+        protocol: 'https',
+        hostname: 'takashinishi.***'
       }
     ],
   }
