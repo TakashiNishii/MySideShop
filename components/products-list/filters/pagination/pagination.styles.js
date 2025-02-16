@@ -5,6 +5,8 @@ export const PaginationContainer = styled.div`
   justify-content: center;
   gap: 10px;
   margin: 20px 0;
+  max-width: 100dvw;
+  flex-wrap: wrap;
 `;
 
 export const PaginationButton = styled.button`

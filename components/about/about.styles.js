@@ -11,6 +11,9 @@ export const AboutContent = styled.div`
   border-radius: 8px;
   box-shadow: ${({ theme }) => theme.shadows.card};
   padding: 40px;
+  @media (max-width: 768px) {
+    padding: 0px;
+  }
 `;
 
 export const AboutSection = styled.section`
