@@ -3,25 +3,48 @@ import { FiltersContainer, Input, SearchWithImageContainer } from './filters.sty
 import { Search } from 'lucide-react'
 import CategoryDropdown from './category-dropdown/CategoryDropdown'
 import { useProducts } from '@/hooks/useProducts'
-import { useState } from 'react'
+import { useRef, useEffect } from 'react'
 
-const Filters = () => {
-  const { searchQuery, setSearchQuery } = useProducts();
-  const [timeoutId, setTimeoutId] = useState(null);
-  const handleSearch = (e) => {
-    const value = e.target.value;
-    if (timeoutId) clearTimeout(timeoutId);
-    setTimeoutId(setTimeout(() => setSearchQuery(value), 500));
-  };
+export default function Filters() {
+  const { setSearchQuery } = useProducts()
+  const timeoutRef = useRef(null)
+  const valueRef = useRef('')
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
+    }
+  }, [])
+
+  const handleSearch = (event) => {
+    const value = event.target.value
+    valueRef.current = value
+
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+    }
+
+    timeoutRef.current = setTimeout(() => {
+      if (valueRef.current === value) {
+        setSearchQuery(value)
+      }
+    }, 500)
+  }
+
   return (
-    <FiltersContainer id='filters-section'>
+    <FiltersContainer>
       <SearchWithImageContainer>
-        <Search size="24" className='icon-search' />
-        <Input type="text" placeholder="Search..." defaultValue={searchQuery} onChange={(e) => handleSearch(e)} />
+        <Search size={20} />
+        <Input
+          type="text"
+          placeholder="Buscar produto"
+          onChange={handleSearch}
+          data-testid="search-input"
+        />
       </SearchWithImageContainer>
       <CategoryDropdown />
     </FiltersContainer>
   )
 }
-
-export default Filters

@@ -1,14 +1,19 @@
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import { fetchCategories } from '@/store/slices/filtersSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { createSelector } from '@reduxjs/toolkit';
+import { fetchCategories } from '../store/slices/filtersSlice';
+
+const selectCategoriesState = createSelector(
+  [(state) => state.filters],
+  (filters) => ({
+    categories: filters.categories,
+    loading: filters.status === 'loading',
+    error: false
+  })
+);
 
 export const useCategories = () => {
   const dispatch = useDispatch();
-  const state = useSelector((state) => ({
-    categories: state.filters.categories,
-    loading: state.filters.status === 'loading',
-    error: false
-  }));
+  const state = useSelector(selectCategoriesState);
 
   return {
     ...state,
