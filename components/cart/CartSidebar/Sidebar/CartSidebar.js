@@ -2,6 +2,7 @@
 import { useCart } from '@/hooks/useCart';
 import { CartSidebarContainer, CartSidebarContent, CartSidebarHeader, CartItem, CartItemInfo, CartTotal, EmptyCart, CartItemQuantity } from './cartsidebar.styles';
 import { X, Trash2, Plus, Minus } from 'lucide-react';
+import Image from 'next/image';
 
 const CartSidebar = (
   { onClose }
@@ -40,7 +41,7 @@ const CartSidebar = (
       <CartSidebarContent>
         {items?.map((item) => (
           <CartItem key={item.id}>
-            <img src={item.image} alt={item.title} />
+            <Image src={item.image} alt={item.title} width={100} height={100} />
             <CartItemInfo>
               <h4>{item.title}</h4>
               <p>${item.price}</p>

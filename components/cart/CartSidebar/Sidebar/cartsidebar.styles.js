@@ -11,6 +11,9 @@ export const CartSidebarContainer = styled.div`
   z-index: 50;
   display: flex;
   flex-direction: column;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const CartSidebarHeader = styled.div`
@@ -90,7 +93,6 @@ export const CartItemQuantity = styled.div`
   gap: 12px;
 
   button {
-    background: none;
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 4px;
@@ -99,17 +101,20 @@ export const CartItemQuantity = styled.div`
     align-items: center;
     justify-content: center;
     transition: all 0.2s;
+    background: ${({ theme }) => theme.colors.primary};
+    border-color: ${({ theme }) => theme.colors.primary};
 
     &:hover {
-      background: ${({ theme }) => theme.colors.primary};
-      border-color: ${({ theme }) => theme.colors.primary};
-      color: white;
+      background: ${({ theme }) => theme.colors.secondary};
+      border-color: ${({ theme }) => theme.colors.secondary};
     }
   }
 
   span {
     font-weight: bold;
   }
+  
+  
 `;
 
 export const CartTotal = styled.div`
