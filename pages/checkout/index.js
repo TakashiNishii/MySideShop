@@ -10,7 +10,7 @@ import {
   ProductInfo,
   Summary,
   SuccessModal
-} from "./checkout.styles";
+} from "@/components/checkout/checkout.styles";
 
 export default function Checkout() {
   const { items, totalPrice, totalQuantity, clearCart } = useCart();
