@@ -2,6 +2,9 @@
 
 Um e-commerce moderno desenvolvido com Next.js, Redux e Styled Components.
 
+![image](https://github.com/user-attachments/assets/a75f75d1-4461-4d1e-a2fd-d4b0a2435f5c)
+
+
 🌐 **[Acesse a aplicação](https://my-side-shop.vercel.app)**
 
 ## 🚀 Funcionalidades
