@@ -1,40 +1,153 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# MySide Shop 🏬
 
-## Getting Started
+Um e-commerce moderno desenvolvido com Next.js, Redux e Styled Components.
 
-First, run the development server:
+🌐 **[Acesse a aplicação](https://my-side-shop.vercel.app)**
+
+## 🚀 Funcionalidades
+
+- ✨ Interface moderna e responsiva
+- 🔍 Busca de produtos em tempo real
+- 🏷️ Filtro por categorias
+- 📱 Layout adaptativo para mobile
+- 🛒 Carrinho de compras persistente
+- 📄 Paginação de produtos
+- 🌙 Suporte a temas customizados
+
+## 🌐 Deploy
+
+A aplicação está disponível em produção através da Vercel:
+
+- **URL**: [https://my-side-shop.vercel.app](https://my-side-shop.vercel.app)
+- **Status**: [![Vercel Status](https://therealsujitk-vercel-badge.vercel.app/?app=my-side-shop)](https://my-side-shop.vercel.app)
+
+## 🛠️ Tecnologias
+
+- Next.js 15.1
+- React 18
+- Redux Toolkit
+- Styled Components
+- Jest & Testing Library
+- Lucide Icons
+
+## 📋 Pré-requisitos
+
+- Node.js 18+
+- npm ou yarn
+
+## 🔧 Instalação
+
+1. Clone o repositório:
+
+```bash
+git clone https://github.com/TakashiNishii/MySideShop.git
+```
+
+2. Instale as dependências:
+
+```bash
+npm install
+# ou
+yarn install
+```
+
+3. Inicie o servidor de desenvolvimento:
 
 ```bash
 npm run dev
-# or
+# ou
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Acesse http://localhost:3000
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## 🧪 Testes
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Execute os testes unitários:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+```bash
+npm test
+# ou
+yarn test
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Para modo watch:
 
-## Learn More
+```bash
+npm test:watch
+# ou
+yarn test:watch
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 📁 Estrutura do Projeto
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+```
+my-side-shop/
+├── components/          # Componentes React
+├── pages/              # Páginas Next.js
+├── services/           # Serviços e APIs
+├── store/              # Configuração Redux
+├── styles/             # Estilos globais e tema
+├── hooks/              # Custom hooks
+└── __tests__/         # Testes
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🔄 Estado Global
 
-## Deploy on Vercel
+O estado da aplicação é gerenciado com Redux Toolkit e inclui:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Produtos (lista, busca, filtros)
+- Carrinho de compras
+- Filtros e paginação
+- Categorias
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+## 🎨 Estilização
+
+Utilizamos Styled Components com um tema customizado que inclui:
+
+- Cores primárias e secundárias
+- Tipografia responsiva
+- Espaçamentos consistentes
+- Breakpoints para responsividade
+- Sombras e efeitos
+
+## 📱 Responsividade
+
+A aplicação é totalmente responsiva e se adapta a:
+
+- 📱 Mobile (< 480px)
+- 📱 Tablet (< 768px)
+- 💻 Desktop (> 1024px)
+
+## 🔒 Persistência
+
+Dados persistidos com Redux Persist:
+
+- Carrinho de compras
+- Filtros selecionados
+- Preferências do usuário
+
+## 🤝 Contribuindo
+
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
+
+## 📝 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+## 👥 Autores
+
+- **Ygor Takashi Nishi** - [GitHub](https://github.com/TakashiNishii)
+
+## 📧 Contato
+
+Ygor Takashi Nishi - ygortn14@gmail.com
+
+Links do projeto:
+
+- Repositório: [https://github.com/TakashiNishii/MySideShop](https://github.com/TakashiNishii/MySideShop)
+- Deploy: [https://my-side-shop.vercel.app](https://my-side-shop.vercel.app)
