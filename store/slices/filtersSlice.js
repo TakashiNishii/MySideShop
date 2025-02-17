@@ -16,22 +16,26 @@ const filtersSlice = createSlice({
     searchQuery: '',
     category: 'all',
     page: 1,
-    totalPages: 1 // Será atualizado com o valor real retornado pela API
+    totalPages: 15
   },
   reducers: {
     setSearchQuery: (state, action) => {
       state.searchQuery = action.payload;
-      state.page = 1; // Reset página ao buscar
+      state.page = 1;
     },
     setCategory: (state, action) => {
       state.category = action.payload;
-      state.page = 1; // Reset página ao mudar categoria
+      state.page = 1;
     },
     setPage: (state, action) => {
-      state.page = action.payload;
+      const newPage = Math.max(1, Math.min(action.payload, state.totalPages));
+      state.page = newPage;
     },
     setTotalPages: (state, action) => {
-      state.totalPages = action.payload;
+      state.totalPages = Math.max(1, action.payload);
+      if (state.page > state.totalPages) {
+        state.page = state.totalPages;
+      }
     }
   },
   extraReducers: (builder) => {
